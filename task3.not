@@ -1,0 +1,26 @@
+CREATE DATABASE School;
+USE School;
+CREATE TABLE student(
+    student_id INT PRIMARY KEY ,
+    student_name VARCHAR (20),
+    student_email VARCHAR (20),
+    class_id INT
+    
+);
+CREATE TABLE class(
+class_id INT PRIMARY KEY,
+    class_name VARCHAR (20),
+    teacher_id INT
+); 
+ALTER TABLE student
+ADD CONSTRAINT class_student
+FOREIGN KEY (class_id) REFERENCES class (class_id);
+CREATE TABLE teacher(
+teacher_id INT PRIMARY KEY,
+    teacher_name VARCHAR (20) ,
+    teacher_email VARCHAR(20),
+    student_id INT,
+    CONSTRAINT teacher_class FOREIGN KEY (student_id) REFERENCES student(student_id)
+);
+
+
